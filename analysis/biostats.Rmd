@@ -8,36 +8,32 @@ editor_options:
 ---
 
 ## Introduction
-
-```{r describe}
-# This data contains several people with their sexs, ages, heights and weights
-```
+This dataset contains several people with their sexs, ages, heights and weights
 
 ```{r import 2 columns}
 temp<-read.csv("data/biostats.csv")[,c('Age','Height..in.')]
 head(temp)
 ```
-
-```{r distribution}
+```{r distribution of Age}
 stat<-read.csv(file ="data/biostats.csv", row.names =1)
 barplot(stat$Age, names.arg = stat$Name,
      xlab = "Name", ylab = "Age",
      main="Plot of Age")
 ```
-
-```{r}
+```{r distribution of Height}
 barplot(stat$Height..in., names.arg = stat$Name,
      xlab = "Name", ylab = "Height(in)",
      main="Plot of Height")
 ```
-
 ```{r scatterplot}
 scatter.smooth(x=temp$Age, y=temp$Height..in., 
                xlab = "Age", ylab = "Height(in)", 
                main="Scatter Plot of Age and Height")
 ```
-
-```{r}
-
+```{r simple linear regression}
+linearMod <- lm(temp$Height..in.~temp$Age)
+print(linearMod)
+summary(linearMod)
 ```
+The linear regression shows whether there's a relationship between Age and Height of biostats of people in the dataset. Under this case, p-value is `r anova(linearMod)$Pr[1]`, which is less than 0.05. It is a meaningful addition to my linear regression model, because it means the age and height are significantly related.
 
