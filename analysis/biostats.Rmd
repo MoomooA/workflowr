@@ -34,6 +34,7 @@ scatter.smooth(x=temp$Age, y=temp$Height..in.,
 linearMod <- lm(temp$Height..in.~temp$Age)
 print(linearMod)
 summary(linearMod)
+
 ```
 The linear regression shows whether there's a relationship between Age and Height of biostats of people in the dataset. Under this case, p-value is `r anova(linearMod)$Pr[1]`, which is less than 0.05. It is a meaningful addition to my linear regression model, because it means the age and height are significantly related.
 
