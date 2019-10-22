@@ -1,0 +1,40 @@
+---
+title: "biostats"
+author: "Yu An"
+date: "2019-10-21"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+```{r describe}
+# This data contains several people with their sexs, ages, heights and weights
+```
+
+```{r import 2 columns}
+temp<-read.csv("data/biostats.csv")[,c('Age','Height..in.')]
+head(temp)
+```
+
+```{r distribution}
+stat<-read.csv(file ="data/biostats.csv", row.names =1)
+barplot(stat$Age, names.arg = stat$Name,
+     xlab = "Name", ylab = "Age",
+     main="Plot of Age")
+```
+
+```{r}
+barplot(stat$Height..in., names.arg = stat$Name,
+     xlab = "Name", ylab = "Height(in)",
+     main="Plot of Height")
+```
+
+```{r scatterplot}
+plot(Height..in.~ Age, data = temp,
+            xlab = "Age", ylab = "Height(in)",
+            main="Scatter Plot of Age and Height")
+```
+
+
