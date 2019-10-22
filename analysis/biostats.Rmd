@@ -32,9 +32,12 @@ barplot(stat$Height..in., names.arg = stat$Name,
 ```
 
 ```{r scatterplot}
-plot(Height..in.~ Age, data = temp,
-            xlab = "Age", ylab = "Height(in)",
-            main="Scatter Plot of Age and Height")
+scatter.smooth(x=temp$Age, y=temp$Height..in., 
+               xlab = "Age", ylab = "Height(in)", 
+               main="Scatter Plot of Age and Height")
 ```
 
+```{r}
+
+```
 
